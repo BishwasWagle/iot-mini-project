@@ -19,7 +19,7 @@ static lpsxxx_t lpsxxx;
 
 static void _lpsxxx_usage(char *cmd)
 {
-    printf("usage: %s <temperature|pressure>\n", cmd);
+    printf("usage: %s <start|stop>\n", cmd);
 }
 
 static int lpsxxx_handler(int argc, char *argv[])
@@ -28,23 +28,25 @@ static int lpsxxx_handler(int argc, char *argv[])
         _lpsxxx_usage(argv[0]);
         return -1;
     }
-
+    while (1){
     /* Implement the lps331ap temperature/pressure subcommands here */
-    if (!strcmp(argv[1], "temperature")) {
+    if (!strcmp(argv[1], "start")) {
         int16_t temp = 0;
         lpsxxx_read_temp(&lpsxxx, &temp);
         printf("Temperature: %i.%u°C\n", (temp / 100), (temp % 100));
-    }
-    else if (!strcmp(argv[1], "pressure")) {
         uint16_t pres = 0;
         lpsxxx_read_pres(&lpsxxx, &pres);
         printf("Pressure: %uhPa\n", pres);
+    }
+    else if (!strcmp(argv[1], "stop")) {
+        return -1;
     }
     else {
         _lpsxxx_usage(argv[0]);
         return -1;
     }
-    return 0;
+    ztimer_sleep(ZTIMER_MSEC, 2000);
+   }   
 }
 
 static const shell_command_t commands[] = {
@@ -65,4 +67,5 @@ int main(void)
 
     return 0;
 }
+
 

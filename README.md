@@ -2,9 +2,7 @@
 
 Here we used the iotlab-m3 board with STM32F013RE MCU. We use the default temperature and pressure sensor in order to sense the data.
 
-We did not clone the RIOT repo because it was consuming 575MB of storage and did not allowed us to flash the firmware resulting in an error as `Disk Quota exceeded`.
-
-So instead we used `/iot-lab/parts/RIOT/` as RIOTBASE.
+We used the inbuilt LPS331AP sensor to measure temperature data every 2 seconds interval.
 
 
 ## Experiment Setup
@@ -30,7 +28,7 @@ make IOTLAB_NODE=auto -C . term
 ``````
 > lps
   
-> lps temperature start
+> lps start
 ``````
 
 # CoAP API Experiment Submission
@@ -73,7 +71,7 @@ Here, we obtained the IPv6 address and set up the server for communication
 # Setting Up IPv6 Networking
 
 ``````
-cd /iot-lab/parts/RIOT/examples
+cd RIOT/examples
 ``````
 ## Compile and submit IPv6 networking experiment
 ``````
