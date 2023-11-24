@@ -2,7 +2,7 @@
 
 Here we used the iotlab-m3 board with STM32F013RE MCU. We use the default temperature and pressure sensor in order to sense the data.
 
-We used the inbuilt LPS331AP sensor to measure temperature data every 2 seconds interval.
+We used the inbuilt LPS331AP sensor to measure temperature and pressure data every 2 seconds interval.
 
 
 ## Experiment Setup
@@ -28,7 +28,7 @@ make IOTLAB_NODE=auto -C . term
 ``````
 > lps
   
-> lps start
+> lps temperature
 ``````
 
 # CoAP API Experiment Submission
