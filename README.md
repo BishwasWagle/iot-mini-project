@@ -20,7 +20,7 @@ source /opt/riot.source
 ``````
 2. Flashing Temperature Sensor Nodes
 ``````
-cd test/
+cd temp_sensor/
 make IOTLAB_NODE=auto flash
 make IOTLAB_NODE=auto -C . term
 ``````
@@ -34,19 +34,20 @@ make IOTLAB_NODE=auto -C . term
 # CoAP API Experiment Submission
 1. Creating a firmware
 ```
-cd coap_api/
+cd coapapi/
 make
 ```
 
 2. Generating channel and pan id
 ```
 python
->>> import os,binascii,random
->>> pan_id = binascii.b2a_hex(os.urandom(2)).decode()
->>> channel = random.randint(11, 26)
->>> print('Use CHANNEL={}, PAN_ID=0x{}'.format(channel, pan_id))
-Use CHANNEL=19, PAN_ID=0x4742
+import os,binascii,random
+pan_id = binascii.b2a_hex(os.urandom(2)).decode()
+channel = random.randint(11, 26)
+print('Use CHANNEL={}, PAN_ID=0x{}'.format(channel, pan_id))
 ```
+Use CHANNEL=19, PAN_ID=0x4742
+
 
 3. Submitting the firmware across 2 nodes (103 and 104)
 ``````
